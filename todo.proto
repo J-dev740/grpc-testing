@@ -1,0 +1,22 @@
+syntax="proto3";
+//package can do multiple services out of which I have specified one service as Todo (userDefined)
+package todoPackage;
+
+
+service Todo{
+    //methods
+    //each methods should have params even if there is no /void prams
+    rpc CreateTodo(TodoItem) returns (TodoItem);
+    rpc readTodos(void ) returns (TodoItems);
+}
+
+message void{}
+message TodoItem{
+    int32 id=1;
+    String text=2;
+}
+
+message TodoItems{
+    //array of TodoItems 
+    repeated TodoItem items=1;
+}
