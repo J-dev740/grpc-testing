@@ -18,11 +18,28 @@ client.createTodo({
     "text":text
 },(err,response)=>{
     // console.log(response)
-    console.log(`received from the server:\n${JSON.stringify(response)}`)
+    // console.log(`received from the server:\n${JSON.stringify(response)}`)
 })
 
-client.readTodos({},(err,response)=>{
+// client.readTodos({},(err,response)=>{
 
-    console.log(`received from the server(readTodos):\n${JSON.stringify(response.items)}`)
+//     // console.log(`received from the server(readTodos):\n${JSON.stringify(response.items)}`)
+//     if(!response.items){
+//         console.log("no items stack")
+//         return 
+//     }else{
+//         response.items.forEach(element => {
+//             console.log(element.text)
+//         });
 
+//     }
+
+// })
+
+const call=client.readTodosStream()
+//when we receive data events from server
+call.on("data",item=>{
+    console.log(`received item from server(stream):\n${JSON.stringify(item.text)}`)
 })
+//when the sever will end communication it will fire an event named end
+call.on("end",e=>console.log("server done!"))

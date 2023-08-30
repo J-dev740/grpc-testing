@@ -22,6 +22,7 @@ server.bind('0.0.0.0:40000',grpc.ServerCredentials.createInsecure())
 server.addService(todoPackage.Todo.service,{
 "createTodo":createTodo,
 "readTodos":readTodos,
+"readTodosStream":readTodosStream
 })
 
 //now start communicating with the server 
@@ -42,4 +43,10 @@ function createTodo(call, callback){
 function readTodos(call,callback){
     console.log(call)
     callback(null,{"items":todos})
+}
+
+function readTodosStream(call,callback){
+    //a way for streaming to the clients
+    todos.forEach(t=>call.write(t));
+    call.end();
 }
