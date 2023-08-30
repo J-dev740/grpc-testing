@@ -6,7 +6,7 @@ package todoPackage;
 service Todo{
     //methods
     //each methods should have params even if there is no /void prams
-    rpc CreateTodo(TodoItem) returns (TodoItem);
+    rpc createTodo(TodoItem) returns (TodoItem);
     rpc readTodos(void ) returns (TodoItems);
 }
 
