@@ -20,3 +20,9 @@ client.createTodo({
     // console.log(response)
     console.log(`received from the server:\n${JSON.stringify(response)}`)
 })
+
+client.readTodos({},(err,response)=>{
+
+    console.log(`received from the server(readTodos):\n${JSON.stringify(response.items)}`)
+
+})

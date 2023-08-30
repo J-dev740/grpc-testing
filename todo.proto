@@ -7,10 +7,10 @@ service Todo{
     //methods
     //each methods should have params even if there is no /void prams
     rpc createTodo(TodoItem) returns (TodoItem);
-    rpc readTodos(void ) returns (TodoItems);
+    rpc readTodos(noParams ) returns (TodoItems);
 }
 
-message void{}
+message noParams {}
 message TodoItem{
     int32 id=1;
     string text=2;
