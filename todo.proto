@@ -13,7 +13,7 @@ service Todo{
 message void{}
 message TodoItem{
     int32 id=1;
-    String text=2;
+    string text=2;
 }
 
 message TodoItems{

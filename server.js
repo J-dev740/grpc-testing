@@ -13,7 +13,7 @@ const todoPackage= grpcObject.todoPackage
 //create a new grpc server
 const server = new grpc.Server()
 //bind this server to a particular port or something like that 
-server.bind('0.0.0.0:40000',grpc.credentials.createInsecure())
+server.bind('0.0.0.0:40000',grpc.ServerCredentials.createInsecure())
 //now this server has no idea about what service we are providing
 //so add service
 //then we have to map the methods provided in the service to something that is in this file
