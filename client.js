@@ -10,12 +10,13 @@ const grpcObject=grpc.loadPackageDefinition(packageDef)
 const todoPackage= grpcObject.todoPackage
 //to create a client specify the service with params such as port and security details
 const client = new todoPackage.Todo("localhost:40000",grpc.credentials.createInsecure())
-
+const text =process.argv[2]
 
 client.createTodo({
     "id":2,
-    "text":"Do Laundry"
+    // "text":"Do Laundry"
+    "text":text
 },(err,response)=>{
-    console.log(response)
-    console.log(`received from the server:${JSON.stringify(response)}`)
+    // console.log(response)
+    console.log(`received from the server:\n${JSON.stringify(response)}`)
 })

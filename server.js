@@ -26,8 +26,18 @@ server.addService(todoPackage.Todo.service,{
 
 //now start communicating with the server 
 server.start()
+
+const todos=[]
 function createTodo(call, callback){
+    const todoItem={
+        "id":todos.length+1,
+        "text":call.request.text
+    }
+    todos.push(todoItem)
+    //server is done , now we have to call the client to  say that the sever is done by using callback function
+    //callback(length_payload:default(null),todoItem)// payload length will be autocalculated if null is provided 
     console.log(call)
+    callback(null,todoItem)
 }
 function readTodos(call,callback){
     console.log(call)
